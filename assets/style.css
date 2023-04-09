@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Play&family=Rajdhani:wght@300&display=swap');
 
 :root {
-    --btn: rgb(39, 111, 206); 
-    --light: rgb(87, 144, 218); 
-    --main: rgb(39, 111, 206); 
+    --btn: rgb(39, 111, 206);
+    --light: rgb(87, 144, 218);
+    --main: rgb(39, 111, 206);
+    --dark: rgb(28, 85, 160);
     font-family: 'Play', sans-serif;
-    
+
 }
 
- input {
+input {
     font-size: inherit;
     font-family: 'Play', sans-serif;
     border-color: var(--light);
@@ -16,21 +17,30 @@
     border-width: 1px;
     outline: black;
     background-color: transparent;
-    appearance: 1rem;
-  }
+
+}
+
+input:focus {
+    box-shadow: 0 0 11px 1px var(--light);
+}
 
 header {
+    font-family: 'Hind', 'Play', sans-serif;
     font-size: 1.25rem;
     text-align: center;
     color: white;
-    background-color: var(--main);
+    /*background-color: var(--main);*/
+    background-image: linear-gradient(to bottom right, #6193dd, #2768c1);
     padding: 1rem;
-   
+
+
 }
+
 .boldtextcss {
     padding-top: 1rem;
-   
+
 }
+
 .boldtextcss,
 #city {
     font-family: 'Play', sans-serif;
@@ -45,7 +55,6 @@ header {
 
 #searchbtn {
     border: 0;
-
     font-family: 'Play', sans-serif;
     color: white;
     background-color: var(--btn);
@@ -54,8 +63,36 @@ header {
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 #searchbtn:hover {
     background-color: var(--light);
+}
+
+#searchbtn:active {
+    box-shadow: 0 0 11px 1px var(--light);
+    background-color: var(--dark);
+}
+
+/* divider */
+.divider {
+    border-top: 1px solid black;
+    z-index: 1;
+}
+
+/* recently searched */
+.historycontainer {
+    position: absolute;
+    padding-left: 1rem;
+    padding-top: 7rem;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.historycontainer h3 {
+    font-family: 'Play', sans-serif;
+    font-size: 1.25rem;
+
 }

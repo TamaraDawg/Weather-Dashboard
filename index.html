@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Weather Dashboard</title>
-    <link rel="stylesheet" href="./assets/reset.css">
-    <link rel="stylesheet" href="./assets/style.css">
-  </head>
-  <body>
-    <header>
-      <h1>Weather Dashboard</h1>  
-      </header>
-    <main>
-        <div id="searchcontainer">
-        <label for="location" class="boldtextcss">Search for a City:</label>
-        <input type="text" id="city">
-        <button id="searchbtn" class="searchb">search</button> 
-         </div>
-    </main>
-	
-    <script src="https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=439e2addbc18b8368ececfb29ed3a010"></script>
-    <script src="./assets/script.js"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="./assets/reset.css">
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Weather Dashboard</h1>
+  </header>
+  <main>
+    <!--search bar-->
+    <div class="searchcontainer">
+      <label for="location" class="boldtextcss">Search for a City:</label>
+      <input type="text" id="city">
+      <button id="searchbtn" class="searchb">search</button>
+    </div>
+    <div class="divider"></div>
+    <!--Search History-->
+    <div class="historycontainer">
+      <h3> Recently Searched</h3>
+
+
+    </div>
+  </main>
+
+  <script
+    src="https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=439e2addbc18b8368ececfb29ed3a010"></script>
+  <script src="./assets/script.js"></script>
 
 </body>
+
 </html>
