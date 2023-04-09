@@ -81,6 +81,13 @@ header {
     z-index: 1;
 }
 
+/* current city and date */
+.citycontainer {
+    padding-top: 1.4rem;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
 /* recently searched */
 .historycontainer {
     position: absolute;

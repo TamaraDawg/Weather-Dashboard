@@ -22,6 +22,17 @@
       <button id="searchbtn" class="searchb">search</button>
     </div>
     <div class="divider"></div>
+    <!--The City Searched with Current Temp, Wind Etc.-->
+    <section class="citycontainer">
+      <h2> Waiting for City..</h2>
+      <p id="currentDate">Oops! Failed to Load Current Date</p>
+
+    </section>
+    <!--The predicted Forecast-->
+    <section class="forecastcontainer">
+
+
+    </section>
     <!--Search History-->
     <div class="historycontainer">
       <h3> Recently Searched</h3>
@@ -34,6 +45,12 @@
     src="https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=439e2addbc18b8368ececfb29ed3a010"></script>
   <script src="./assets/script.js"></script>
 
+  <!--linked dayjs-->
+  <script
+  src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+  integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+  crossorigin="anonymous"
+></script>
 </body>
 
 </html>
