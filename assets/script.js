@@ -7,10 +7,10 @@ const searchBtn = document.getElementById('searchbtn')
 //currentdate and city section
 const date = document.getElementById('currentDate');
 const seeforecast = document.getElementById('seeforecast');
-
+const hideforecast = document.getElementById('hideforecast')
 date.classList.add('hidden');
 seeforecast.classList.add('hidden');
-
+hideforecast.classList.add('hidden');
 var currentDate = dayjs().format("MMM D, YYYY");
 document.getElementById("currentDate").textContent = currentDate;
 
@@ -26,10 +26,13 @@ function searchCity(event) {
     loadResults();
 } 
 
-
+function hidebuttonhides() {
+    hideforecast.classList.add('hidden');
+    loadResults();
+}
 
 function loadResults() { 
-
+    
 const city = localStorage.getItem('city'); // replace with user input
 
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
@@ -58,5 +61,24 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
 seeforecast.addEventListener("click", forecast);
 
 function forecast() {
+    const city = localStorage.getItem('city');
  console.log('worked');
+ seeforecast.classList.add('hidden');
+ hideforecast.classList.remove('hidden');
+ hideforecast.addEventListener("click", hidebuttonhides);
+
+ 
+ fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`)
+  .then(response => response.json())
+  .then(data => {
+    
+      
+    console.log(data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
+
+
 };
