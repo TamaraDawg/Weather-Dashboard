@@ -24,9 +24,13 @@
     <div class="divider"></div>
     <!--The City Searched with Current Temp, Wind Etc.-->
     <section class="citycontainer">
-      <h2> Waiting for City..</h2>
+      <h2 id="city-name"> Waiting for City..</h2>
+      <img id="weather-icon" src="" alt="">
       <p id="currentDate">Oops! Failed to Load Current Date</p>
-
+      <p id="temp"></p>
+      <p id="humid"></p>
+      <p id="wind"></p>
+      <button id="seeforecast">See Forecast</button>
     </section>
     <!--The predicted Forecast-->
     <section class="forecastcontainer">
@@ -41,16 +45,13 @@
     </div>
   </main>
 
-<!--linked dayjs-->
-<script
-src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
-crossorigin="anonymous"
-></script>
+  <!--linked dayjs-->
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
   <script src="./assets/script.js"></script>
 
-  
-></script>
+
+  ></script>
 </body>
 
 </html>

@@ -5,6 +5,12 @@ const searchBtn = document.getElementById('searchbtn')
 //const lon= ;
 
 //currentdate and city section
+const date = document.getElementById('currentDate');
+const seeforecast = document.getElementById('seeforecast');
+
+date.classList.add('hidden');
+seeforecast.classList.add('hidden');
+
 var currentDate = dayjs().format("MMM D, YYYY");
 document.getElementById("currentDate").textContent = currentDate;
 
@@ -23,15 +29,34 @@ function searchCity(event) {
 
 
 function loadResults() { 
+
 const city = localStorage.getItem('city'); // replace with user input
 
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
   .then(response => response.json())
   .then(data => {
-    // handle the weather data here
+    const city = data.name;
+      const icon = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
+      const temp = Math.round(data.main.temp - 273.15);
+      const humidity = data.main.humidity;
+      const windSpeed = data.wind.speed;
+
+      document.getElementById("city-name").textContent = city;
+      date.classList.remove('hidden');
+      document.getElementById("weather-icon").setAttribute("src", icon);
+      document.getElementById("temp").textContent = `${temp}°C`;
+      document.getElementById("humid").textContent = `Humidity: ${humidity}%`;
+      document.getElementById("wind").textContent = `Wind Speed: ${windSpeed} m/s`;
+      seeforecast.classList.remove('hidden');
     console.log(data);
   })
   .catch(error => {
     console.error('Error:', error);
   });
 }
+
+seeforecast.addEventListener("click", forecast);
+
+function forecast() {
+ console.log('worked');
+};
