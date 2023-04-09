@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+:root {
+    --btn: rgb(39, 111, 206); 
+    
+}
+.boldtextcss,
+#city {
+    font-family: 'Play', sans-serif;
+    display: block;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#searchbtn {
+    border: 0;
+
+    font-family: 'Play', sans-serif;
+    color: white;
+    background-color: var(--btn);
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+}
