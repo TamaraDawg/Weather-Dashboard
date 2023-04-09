@@ -2,7 +2,34 @@
 
 :root {
     --btn: rgb(39, 111, 206); 
+    --light: rgb(87, 144, 218); 
+    --main: rgb(39, 111, 206); 
+    font-family: 'Play', sans-serif;
     
+}
+
+ input {
+    font-size: inherit;
+    font-family: 'Play', sans-serif;
+    border-color: var(--light);
+    border: solid;
+    border-width: 1px;
+    outline: black;
+    background-color: transparent;
+    appearance: 1rem;
+  }
+
+header {
+    font-size: 1.25rem;
+    text-align: center;
+    color: white;
+    background-color: var(--main);
+    padding: 1rem;
+   
+}
+.boldtextcss {
+    padding-top: 1rem;
+   
 }
 .boldtextcss,
 #city {
@@ -27,4 +54,8 @@
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 1.5rem;
+}
+
+#searchbtn:hover {
+    background-color: var(--light);
 }

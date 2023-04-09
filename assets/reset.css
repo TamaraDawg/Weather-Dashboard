@@ -1,0 +1,34 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  button, input, select, textarea {
+    font-size: inherit;
+    font-family: inherit;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    appearance: none;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
