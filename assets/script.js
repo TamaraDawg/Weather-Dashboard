@@ -74,11 +74,12 @@ function forecast() {
     
       
     console.log(data);
+    console.log
   })
   .catch(error => {
     console.error('Error:', error);
   });
-
+   
 
 
 };
