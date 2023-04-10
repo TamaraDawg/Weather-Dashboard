@@ -16,7 +16,7 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 
-Deployed Site Link:
+Deployed Site Link:  https://tamaradawg.github.io/Weather-Dashboard/
 
 Deployed Site Image:
 ![Weather Dashboard - Google Chrome 10_04_2023 12_05_34 PM (1)](https://user-images.githubusercontent.com/122523521/230811342-219150d3-d744-4a85-abca-999160202ff9.png)
