@@ -13,22 +13,30 @@ seeforecast.classList.add('hidden');
 hideforecast.classList.add('hidden');
 var currentDate = dayjs().format("MMM D, YYYY");
 document.getElementById("currentDate").textContent = currentDate;
+var cityInput = document.querySelector("#city");
 
 searchBtn.addEventListener("click", searchCity);
 
+cityInput.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    searchBtn.click();
+  }
+});
 
+  
 function searchCity(event) {
   event.preventDefault()
-  var cityInput = document.querySelector("#city");
   var city = cityInput.value;
   console.log(city);
-  localStorage.setItem('city', city);
+  localStorage.setItem('city', city); 
   loadResults();
 }
 
 function hidebuttonhides() {
   hideforecast.classList.add('hidden');
-  loadResults();
+  const forecastList = document.querySelector('.forecastcontainer');
+  forecastList.classList.add('hidden');
+  seeforecastbtn();
 }
 
 function loadResults() {
@@ -66,16 +74,23 @@ function history() {
   const city = localStorage.getItem('city');
   li.textContent = (city);
   li.classList.add('prevcity');
-   list.appendChild(li);
+  list.appendChild(li);
   li.addEventListener('click', function () {
     this.remove();
     localStorage.setItem('city', city);
     loadResults();
   });
- 
+
 }
 
 seeforecast.addEventListener("click", forecast);
+
+
+function seeforecastbtn() {
+  seeforecast.classList.remove('hidden');
+  hideforecast.classList.add('hidden');
+  
+};
 
 function forecast() {
   const city = localStorage.getItem('city');
@@ -83,20 +98,44 @@ function forecast() {
   seeforecast.classList.add('hidden');
   hideforecast.classList.remove('hidden');
   hideforecast.addEventListener("click", hidebuttonhides);
-
+  
+  const forecastList = document.querySelector('.forecastcontainer');
+forecastList.classList.remove('hidden');
+  forecastList.innerHTML = '';
 
   fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`)
     .then(response => response.json())
     .then(data => {
-
-
       console.log(data);
 
-    })
-    .catch(error => {
-      console.error('Error:', error);
+      const forecasts = data.list.filter(forecast => forecast.dt_txt.includes('12:00:00'));
+      forecasts.forEach(forecast => {
+        const icon = `http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`;
+        const temp = Math.round(forecast.main.temp - 273.15);
+        const humidity = forecast.main.humidity;
+        const date = dayjs(forecast.dt_txt).format('ddd MMM D');
+
+        const listItem = document.createElement('li');
+
+        const dateElement = document.createElement('div');
+        dateElement.textContent = date;
+        listItem.appendChild(dateElement);
+        dateElement.classList.add('casttextcss')
+
+        const iconElement = document.createElement('img');
+        iconElement.src = icon;
+        listItem.appendChild(iconElement);
+
+        const tempElement = document.createElement('div');
+        tempElement.textContent = `${temp}°C`;
+        listItem.appendChild(tempElement);
+tempElement.classList.add('casttextcss')
+        const humidElement = document.createElement('div');
+        humidElement.textContent = `Humidity: ${humidity}%`;
+        listItem.appendChild(humidElement);
+
+        forecastList.appendChild(listItem);
+        forecastList.appendChild(listItem);
+      });
     });
-
-
-
-};
+}

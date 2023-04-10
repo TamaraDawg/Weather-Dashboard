@@ -164,3 +164,29 @@ margin-left: 1rem;
     margin-bottom: 0.16rem;
     text-align: center;
 }
+
+.forecastcontainer {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.forecastcontainer li {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    padding-bottom: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--light);
+    text-align: center;
+    font-family: 'Play', sans-serif;
+
+}
+
+.casttextcss {
+    font-size: 1.25rem;
+    padding-top: 0.6rem;
+    font-weight: bold;
+}
