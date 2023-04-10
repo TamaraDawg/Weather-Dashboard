@@ -18,27 +18,28 @@ searchBtn.addEventListener("click", searchCity);
 
 
 function searchCity(event) {
-    event.preventDefault()
-    var cityInput = document.querySelector("#city");
-    var city = cityInput.value;
-    console.log(city);
-    localStorage.setItem('city', city);
-    loadResults();
-} 
-
-function hidebuttonhides() {
-    hideforecast.classList.add('hidden');
-    loadResults();
+  event.preventDefault()
+  var cityInput = document.querySelector("#city");
+  var city = cityInput.value;
+  console.log(city);
+  localStorage.setItem('city', city);
+  loadResults();
 }
 
-function loadResults() { 
-    
-const city = localStorage.getItem('city'); // replace with user input
+function hidebuttonhides() {
+  hideforecast.classList.add('hidden');
+  loadResults();
+}
 
-fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
-  .then(response => response.json())
-  .then(data => {
-    const city = data.name;
+function loadResults() {
+
+  const city = localStorage.getItem('city'); // replace with user input
+  var cityInput = document.querySelector("#city");
+  cityInput.value = '';
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+    .then(response => response.json())
+    .then(data => {
+      const city = data.name;
       const icon = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`;
       const temp = Math.round(data.main.temp - 273.15);
       const humidity = data.main.humidity;
@@ -51,35 +52,51 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
       document.getElementById("humid").textContent = `Humidity: ${humidity}%`;
       document.getElementById("wind").textContent = `Wind Speed: ${windSpeed} m/s`;
       seeforecast.classList.remove('hidden');
-    console.log(data);
-  })
-  .catch(error => {
-    console.error('Error:', error);
+      console.log(data);
+      history();
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+function history() {
+  const list = document.querySelector('ul');
+  const li = document.createElement('li');
+  const city = localStorage.getItem('city');
+  li.textContent = (city);
+  li.classList.add('prevcity');
+   list.appendChild(li);
+  li.addEventListener('click', function () {
+    this.remove();
+    localStorage.setItem('city', city);
+    loadResults();
   });
+ 
 }
 
 seeforecast.addEventListener("click", forecast);
 
 function forecast() {
-    const city = localStorage.getItem('city');
- console.log('worked');
- seeforecast.classList.add('hidden');
- hideforecast.classList.remove('hidden');
- hideforecast.addEventListener("click", hidebuttonhides);
+  const city = localStorage.getItem('city');
+  console.log('worked');
+  seeforecast.classList.add('hidden');
+  hideforecast.classList.remove('hidden');
+  hideforecast.addEventListener("click", hidebuttonhides);
 
- 
- fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`)
-  .then(response => response.json())
-  .then(data => {
-    
-      
-    console.log(data);
-    console.log
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-   
+
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`)
+    .then(response => response.json())
+    .then(data => {
+
+
+      console.log(data);
+
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+
 
 
 };

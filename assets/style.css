@@ -76,6 +76,7 @@ header {
 
 /* divider */
 .divider {
+    margin-bottom: 10px;
     border-top: 1px solid black;
     /*  z-index: 1; */
 }
@@ -136,10 +137,30 @@ header {
     top: 0;
     left: 0;
     z-index: 1;
+margin-left: 1rem;
 }
 
 .historycontainer h3 {
+    text-align: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
     font-family: 'Play', sans-serif;
     font-size: 1.25rem;
 
+}
+
+/* history buttons */
+
+.prevcity {
+    border: 0;
+    font-family: 'Play', sans-serif;
+    color: white;
+    background-color: rgb(116, 121, 128);
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    padding: 5px 5px;
+    font-size: 1.2rem;
+    margin-bottom: 0.16rem;
+    text-align: center;
 }
